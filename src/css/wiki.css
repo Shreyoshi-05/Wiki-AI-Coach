@@ -1,0 +1,81 @@
+
+.wiki_page{
+  width: 65vw;
+  margin:3rem auto;
+
+  h1{
+    font-size: 1.7rem;
+    font-weight: 800;
+    color: purple;
+
+  }
+
+}
+
+.input_con{
+  
+  margin: auto;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  
+  
+  padding: 0 1rem;
+  /* margin: 2rem; */
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  
+
+  input{
+    padding: 0.8rem 2rem;
+    width: 40%;
+    outline: none;
+    border-radius: 2rem;
+    border: 1px solid rgb(239, 238, 238);
+    border-bottom: 0.3rem solid rgb(164, 58, 164);
+  }
+
+  input::placeholder {
+    color: #888;
+    font-weight: 500;
+    font-size: 0.9rem;
+    /* font-size: 16px; */
+    /* letter-spacing: 0.5px; */
+  }
+}
+/* .search{
+  background-color: purple;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  width: 3rem;
+  height: 3rem;
+} */
+
+.search_div{
+  width: 3.1rem;
+  height: 3.1rem;
+  background-color: purple;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.search{
+  font-size: 1.5rem;
+  color: white;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.heading{
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: purple;
+}
