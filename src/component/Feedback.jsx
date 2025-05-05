@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import '../css/feed.css'
+import '../css/Feed.css'
 import { AppContext } from '../context/AppProvider'
 import { Link, useNavigate } from 'react-router-dom';
 
