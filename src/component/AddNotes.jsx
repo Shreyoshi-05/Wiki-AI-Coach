@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../css/AddNotes.css";
+import "../css/Addnotes.css";
 import note from "../assets/notes.png";
 import create from "../assets/edit.png";
 import { FaEdit } from "react-icons/fa";
