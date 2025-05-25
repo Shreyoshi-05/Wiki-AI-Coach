@@ -32,10 +32,11 @@ const Interview = () => {
     results.map((result) => setUserAns((pre) => pre + result?.transcript));
   }, [results]);
 
-  console.log(questionsans)
-  // console.log("jjj")
+  // console.log(questionsans)
+  console.log(interimResult)
 
   async function handelSave(){
+    
     if(userAns.length < 10){
       return;
     }
@@ -60,13 +61,19 @@ const Interview = () => {
     
     setUserAns(""); 
     setCurrentidx(pre => pre+1);
+    
   }
 
   useEffect(()=>{
     localStorage.setItem("feedback",JSON.stringify(feedback));
   },[feedback]);
 
-  // console.log(feedback);
+  useEffect(() => {
+  if (tost) {
+    alert("Got some issue in recording answer... Do it again...");
+    setTost(false); 
+  }
+}, [tost]);
 
 
   return (
@@ -79,7 +86,7 @@ const Interview = () => {
         tost &&
         alert("Got Some isseu in recording ans ... do It Again...")
       }
-        {opencam ? (
+        {/* {opencam ? (
           <div className="web_cam">
             <Webcam
               onUserMedia={() => setOpencam(true)}
@@ -87,7 +94,6 @@ const Interview = () => {
               mirrored={true}
               style={{ height: 300, width: "100%", xIndex: 10 }}
             />
-            {/* <button>stop</button> */}
 
             <div>
               <h1>Recording: {isRecording.toString()}</h1>
@@ -99,22 +105,47 @@ const Interview = () => {
               </button>
             </div>
           </div>
-        ) : (
+        ) : ( */}
           <div className="cam_con">
+            {
+              opencam ?
+              <Webcam
+              onUserMedia={() => setOpencam(true)}
+              onUserMediaError={() => setOpencam(false)}
+              mirrored={true}
+              style={{ height: 300, width: "100%", xIndex: 10 }}
+            />
+            :
             <div className="cl_cam">
               <BiSolidWebcam style={{ fontSize: "8rem",color:"white" }} />
             </div>
+            }
+            {/* <div className="cl_cam">
+              <BiSolidWebcam style={{ fontSize: "8rem",color:"white" }} />
+            </div> */}
 
-            {start && (
+            {/* {start && (
               <button
                 onClick={() => setOpencam(true)}
                 className="btn btn-soft btn-primary"
               >
                 Enable Web Camera and Microphone
               </button>
-            )}
+            )} */}
+            {
+              opencam ?
+              <button onClick={() => setOpencam(false)}
+                className="btn btn-soft btn-primary">
+                  Disable Web Camera and Microphone
+                  </button>
+                  :
+                  <button onClick={() => setOpencam(true)}
+                className="btn btn-soft btn-primary">
+                  Enable Web Camera and Microphone
+                  </button>
+            }
 
-            {start == false && (
+            {!start && (
               <button
                 onClick={() => setStart(true)}
                 className="btn btn-primary"
@@ -125,7 +156,7 @@ const Interview = () => {
 
             {start && (
               <div>
-                <h5><strong>Recording:</strong> {isRecording.toString()}</h5>
+                {isRecording && <strong>Recording...</strong> }
 
                 <div className="btns">
                 <button
@@ -137,17 +168,18 @@ const Interview = () => {
                 </button>
 
                 {
-                  currentidx == questionsans.length-1 ?
+                  currentidx >= questionsans.length-1 ?
                   <button className="btn btn-active btn-primary"><Link to="/feed">End Interview</Link></button>
                   :
                   <button onClick={handelSave} className="btn btn-active btn-primary">Save Ans</button>
                 }
+                <p>{interimResult}</p>
 
                 </div>
               </div>
             )}
           </div>
-        )}
+        {/* )} */}
       </div>
     </div>
   );

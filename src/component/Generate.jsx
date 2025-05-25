@@ -48,6 +48,8 @@ const Generate = () => {
     }
   }
 
+  console.log(loding);
+
   return (
     <div className="w-full min-h-screen px-4 py-8 bg-gray-50">
   <div className="max-w-5xl mx-auto flex flex-col gap-6">
@@ -64,7 +66,10 @@ const Generate = () => {
         className="btn bg-black text-white hover:bg-gray-800"
         onClick={() => document.getElementById("my_modal_5").showModal()}
       >
-        + Generate Interview
+        {loding ?
+        <span className="loading loading-dots loading-lg"></span>:
+        "+ Generate Interview"
+        }
       </button>
     </div>
 

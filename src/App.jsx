@@ -18,8 +18,10 @@ const App = () => {
 
 
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
     {!shuldhide && <Header />}
+
+    <div className="flex-1">
     <Routes>
       <Route path='/' element={<Home />}></Route>
       <Route path='/generate' element={<Generate />}></Route>
@@ -29,8 +31,9 @@ const App = () => {
       <Route path='/signup' element={<SignUp />}></Route>
       <Route path='/signin' element={<Signin />}></Route>
     </Routes>
+    </div>
     {!shuldhide && <Footer />}
-    </>
+    </div>
   )
 }
 
